@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    * { padding:0;margin:0; }
+    .map {
+      width: 80%;
+      height: 100vh;
+      background-color: #CCC;
+      float: left;
+    }
+
+    .elm {
+      width: 20%;
+      float: left;
+    }
+
+    .map__config {
+      padding: 10px;
+    }
+
+    button { display: block; margin-top: 20px;}
+  </style>
+</head>
+<body>
+
+  <div class="map"></div>
+
+  <div class="elm"></div>
+
+ <!-- gross code blow  -->
+ <script>
+    let gmap = null;
+    const gmapConfig = {
+      center: {lat: 44.540, lng: -78.546},
+      zoom: 8
+    }
+    function initMap() {
+      const  mapDiv = document.querySelector('.map');
+      gmap = new google.maps.Map(mapDiv, {
+        center: {lat: 44.540, lng: -78.546},
+        zoom: 8
+      });
+    }
+  </script>
+
+  <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"></script>
+
+  <script src="app.js"></script>
+  <script src="main.js"></script>
+  <script>
+    const app = Elm.Main.embed(document.querySelector(".elm"))
+
+    app.ports.updateMap.subscribe(model => {
+      const lat = model.lat > 0 ? model.lat : gmapConfig.center.lat;
+      const lng = model.lng > 0 ? model.lng : gmapConfig.center.lng;
+      
+      gmap.setZoom(model.zoom > 0 ? model.zoom : 8)
+      gmap.panTo({ lat, lng })
+    });
+  </script>
+</body>
+</html>

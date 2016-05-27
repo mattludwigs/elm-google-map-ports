@@ -1,0 +1,17 @@
+{
+  "name": "googlemaps",
+  "version": "1.0.0",
+  "description": "",
+  "main": "brunch-config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "node_modules/.bin/brunch build && node_modules/.bin/http-server ./public"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "brunch": "^2.8.0",
+    "elm-brunch": "^0.5.0",
+    "http-server": "^0.9.0"
+  }
+}
