@@ -6,3 +6,5 @@ $ npm install
 $ elm-package install 
 $ npm run server
 ```
+
+localhost:8080
